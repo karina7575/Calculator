@@ -3,38 +3,67 @@ public class Main
     public static void main (String[] args)
     {
         int a,b;
-        String str1 = "II+4";
-        if (str1.indexOf(43) != -1)
+        String str1 = "X*X";
+        try
         {
-            String[] strings = str1.split("\\+");
-            a = RomToArabic(strings [0]);
-            System.out.println(a);
-            //a = Integer.parseInt (strings[0]);
-            b = Integer.parseInt (strings[1]);
-            System.out.println(a+b);
-        }
-        else if (str1.indexOf(45) != -1)
+            if (str1.indexOf(43) != -1)
+            {
+                String[] strings = str1.split("\\+");
+                if (((strings[0].indexOf(73) != -1) || (strings[0].indexOf(86) != -1) || (strings[0].indexOf(88) != -1)) && ((strings[1].indexOf(73) != -1) || (strings[1].indexOf(86) != -1) || (strings[1].indexOf(88) != -1))) {
+                    a = RomToArabic(strings[0]);
+                    b = RomToArabic(strings[1]);
+                    System.out.println(a + b);
+                } else {
+                    a = Integer.parseInt(strings[0]);
+                    b = Integer.parseInt(strings[1]);
+                    System.out.println(a + b);
+                }
+            }
+            else if (str1.indexOf(45) != -1)
+            {
+                String[] strings = str1.split("\\-");
+                if (((strings[0].indexOf(73) != -1) || (strings[0].indexOf(86) != -1) || (strings[0].indexOf(88) != -1)) && ((strings[1].indexOf(73) != -1) || (strings[1].indexOf(86) != -1) || (strings[1].indexOf(88) != -1))) {
+                    a = RomToArabic(strings[0]);
+                    b = RomToArabic(strings[1]);
+                    System.out.println(a - b);
+                } else {
+                    a = Integer.parseInt(strings[0]);
+                    b = Integer.parseInt(strings[1]);
+                    System.out.println(a - b);
+                }
+            }
+            else if (str1.indexOf(42) != -1)
+            {
+                String[] strings = str1.split("\\*");
+                if (((strings[0].indexOf(73) != -1) || (strings[0].indexOf(86) != -1) || (strings[0].indexOf(88) != -1)) && ((strings[1].indexOf(73) != -1) || (strings[1].indexOf(86) != -1) || (strings[1].indexOf(88) != -1))) {
+                    a = RomToArabic(strings[0]);
+                    b = RomToArabic(strings[1]);
+                    System.out.println(a * b);
+                }
+                else
+                {
+                    a = Integer.parseInt(strings[0]);
+                    b = Integer.parseInt(strings[1]);
+                    System.out.println(a * b);
+                }
+            }
+            else if (str1.indexOf(47) != -1)
+            {
+                String[] strings = str1.split("\\/");
+                if (((strings[0].indexOf(73) != -1) || (strings[0].indexOf(86) != -1) || (strings[0].indexOf(88) != -1)) && ((strings[1].indexOf(73) != -1) || (strings[1].indexOf(86) != -1) || (strings[1].indexOf(88) != -1))) {
+                    a = RomToArabic(strings[0]);
+                    b = RomToArabic(strings[1]);
+                    System.out.println(a / b);
+                } else {
+                    a = Integer.parseInt(strings[0]);
+                    b = Integer.parseInt(strings[1]);
+                    System.out.println(a / b);
+                }
+            }
+        } catch (NumberFormatException e)
         {
-            String[] strings = str1.split("\\-");
-            a = Integer.parseInt (strings[0]);
-            b = Integer.parseInt (strings[1]);
-            System.out.println(a-b);
+            System.out.println("используются одновременно разные системы счисления");
         }
-        else if (str1.indexOf(42) != -1)
-        {
-            String[] strings = str1.split("\\*");
-            a = Integer.parseInt (strings[0]);
-            b = Integer.parseInt (strings[1]);
-            System.out.println(a*b);
-        }
-        else if (str1.indexOf(47) != -1)
-        {
-            String[] strings = str1.split("\\/");
-            a = Integer.parseInt (strings[0]);
-            b = Integer.parseInt (strings[1]);
-            System.out.println(a/b);
-        }
-
     }
     static int RomToArabic(String value)
     {
@@ -49,5 +78,9 @@ public class Main
         else if (value.equals("IX")) return 9;
         else if (value.equals("X")) return 10;
         return 0;
+    }
+    static <string> string ArabicToRom(int value)
+    {
+        
     }
 }
