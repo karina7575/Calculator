@@ -1,16 +1,22 @@
 import java.io.IOException;
+import java.util.Scanner;
 
 public class Main
 {
     public static void main (String[] args) throws Exceptions {
         int a,b, result;
-        String str1 = "I+I";
-
+        Scanner in = new Scanner(System.in);
+        String str1 = in.nextLine();
+        in.close();
         try
         {
             if (str1.indexOf(43) != -1)
             {
                 String[] strings = str1.split("\\+");
+                if (!(strings[2].isEmpty()))
+                {
+                    throw new Exceptions("т.к. формат математической операции не удовлетворяет заданию - два операнда и один оператор (+, -, /, *)") ;
+                }
                 if (((strings[0].indexOf(73) != -1) || (strings[0].indexOf(86) != -1) || (strings[0].indexOf(88) != -1)) && ((strings[1].indexOf(73) != -1) || (strings[1].indexOf(86) != -1) || (strings[1].indexOf(88) != -1))) {
                     a = RomToArabic(strings[0]);
                     b = RomToArabic(strings[1]);
@@ -25,6 +31,10 @@ public class Main
             else if (str1.indexOf(45) != -1)
             {
                 String[] strings = str1.split("\\-");
+                if (!(strings[2].isEmpty()))
+                {
+                    throw new Exceptions("т.к. формат математической операции не удовлетворяет заданию - два операнда и один оператор (+, -, /, *)") ;
+                }
                 if (((strings[0].indexOf(73) != -1) || (strings[0].indexOf(86) != -1) || (strings[0].indexOf(88) != -1)) && ((strings[1].indexOf(73) != -1) || (strings[1].indexOf(86) != -1) || (strings[1].indexOf(88) != -1))) {
                     a = RomToArabic(strings[0]);
                     b = RomToArabic(strings[1]);
@@ -43,6 +53,10 @@ public class Main
             else if (str1.indexOf(42) != -1)
             {
                 String[] strings = str1.split("\\*");
+                if (!(strings[2].isEmpty()))
+                {
+                    throw new Exceptions("т.к. формат математической операции не удовлетворяет заданию - два операнда и один оператор (+, -, /, *)") ;
+                }
                 if (((strings[0].indexOf(73) != -1) || (strings[0].indexOf(86) != -1) || (strings[0].indexOf(88) != -1)) && ((strings[1].indexOf(73) != -1) || (strings[1].indexOf(86) != -1) || (strings[1].indexOf(88) != -1))) {
                     a = RomToArabic(strings[0]);
                     b = RomToArabic(strings[1]);
@@ -59,6 +73,10 @@ public class Main
             else if (str1.indexOf(47) != -1)
             {
                 String[] strings = str1.split("\\/");
+                if (!(strings[2].isEmpty()))
+                {
+                    throw new Exceptions("т.к. формат математической операции не удовлетворяет заданию - два операнда и один оператор (+, -, /, *)") ;
+                }
                 if (((strings[0].indexOf(73) != -1) || (strings[0].indexOf(86) != -1) || (strings[0].indexOf(88) != -1)) && ((strings[1].indexOf(73) != -1) || (strings[1].indexOf(86) != -1) || (strings[1].indexOf(88) != -1))) {
                     a = RomToArabic(strings[0]);
                     b = RomToArabic(strings[1]);
@@ -71,9 +89,9 @@ public class Main
                 }
             }
             else throw new Exceptions("т.к. строка не является математической операцией");
-        } catch (NumberFormatException)
+        } catch (NumberFormatException e)
         {
-            System.out.println("т.к. используются одновременно разные системы счисления");
+            System.out.println("throws Exception //т.к. используются одновременно разные системы счисления");
         }
     }
     static int RomToArabic(String value)
