@@ -4,7 +4,7 @@ public class Main
 {
     public static void main (String[] args) throws Exceptions {
         int a,b, result;
-        String str1 = "III-VI";
+        String str1 = "I+I";
 
         try
         {
@@ -30,7 +30,7 @@ public class Main
                     b = RomToArabic(strings[1]);
 
                     result = a - b;
-                    if (result < 0) throw new Exceptions("в римской системе нет отрицательных чисел");
+                    if (result < 0) throw new Exceptions("т.к. в римской системе нет отрицательных чисел");
                     ArabicToRom(result);
                 }
 
@@ -70,10 +70,10 @@ public class Main
                     System.out.println(a / b);
                 }
             }
-            else throw new IOException();
-        } catch (NumberFormatException | IOException e)
+            else throw new Exceptions("т.к. строка не является математической операцией");
+        } catch (NumberFormatException)
         {
-            System.out.println("используются одновременно разные системы счисления");
+            System.out.println("т.к. используются одновременно разные системы счисления");
         }
     }
     static int RomToArabic(String value)
