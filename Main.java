@@ -15,8 +15,10 @@ public class Main
             {
                 strings = str1.split("\\+",3);
 
-                if (!(strings[2].isEmpty()))
+                if ((strings.length) > 2)
+                {
                     throw new Exceptions("т.к. формат математической операции не удовлетворяет заданию - два операнда и один оператор (+, -, /, *)");
+                }
                 if (((strings[0].indexOf(73) != -1) || (strings[0].indexOf(86) != -1) || (strings[0].indexOf(88) != -1)) && ((strings[1].indexOf(73) != -1) || (strings[1].indexOf(86) != -1) || (strings[1].indexOf(88) != -1))) {
                     a = RomToArabic(strings[0]);
                     b = RomToArabic(strings[1]);
@@ -31,7 +33,7 @@ public class Main
             else if (str1.indexOf(45) != -1)
             {
                 strings = str1.split("\\-");
-                if (!(strings[2].isEmpty()))
+                if ((strings.length) > 2)
                 {
                     throw new Exceptions("т.к. формат математической операции не удовлетворяет заданию - два операнда и один оператор (+, -, /, *)") ;
                 }
@@ -53,7 +55,7 @@ public class Main
             else if (str1.indexOf(42) != -1)
             {
                 strings = str1.split("\\*");
-                if (!(strings[2].isEmpty()))
+                if ((strings.length) > 2)
                 {
                     throw new Exceptions("т.к. формат математической операции не удовлетворяет заданию - два операнда и один оператор (+, -, /, *)") ;
                 }
@@ -73,7 +75,7 @@ public class Main
             else if (str1.indexOf(47) != -1)
             {
                 strings = str1.split("\\/");
-                if (!(strings[2].isEmpty()))
+                if ((strings.length) > 2)
                 {
                     throw new Exceptions("т.к. формат математической операции не удовлетворяет заданию - два операнда и один оператор (+, -, /, *)") ;
                 }
