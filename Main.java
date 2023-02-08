@@ -4,13 +4,20 @@ import java.util.Scanner;
 public class Main
 {
     public static void main (String[] args) throws Exceptions {
-        int a,b, result;
-        String [] strings = new String [3];
+        int a, b, result;
         Scanner in = new Scanner(System.in);
         String str1 = in.nextLine();
         in.close();
+        str1 = str1.replaceAll(" ", "");
+        calc(str1);
+    }
+    public static String calc(String str1) throws Exceptions
+    {
+        String s = str1;
         try
         {
+            int a, b, result;
+            String[] strings = new String[3];
             if (str1.indexOf(43) != -1)
             {
                 strings = str1.split("\\+",3);
@@ -22,12 +29,24 @@ public class Main
                 if (((strings[0].indexOf(73) != -1) || (strings[0].indexOf(86) != -1) || (strings[0].indexOf(88) != -1)) && ((strings[1].indexOf(73) != -1) || (strings[1].indexOf(86) != -1) || (strings[1].indexOf(88) != -1))) {
                     a = RomToArabic(strings[0]);
                     b = RomToArabic(strings[1]);
+                    if (a < 1 || a > 10 || b < 1 || b > 10)
+                    {
+                        throw new Exceptions("т.к. калькулятор принимает числа от 1 до 10 включительно");
+                    }
                     result = a+b;
                     ArabicToRom(result);
+
                 } else {
                     a = Integer.parseInt(strings[0]);
                     b = Integer.parseInt(strings[1]);
-                    System.out.println(a + b);
+                    if (a < 1 || a > 10 || b < 1 || b > 10)
+                    {
+                        throw new Exceptions("т.к. калькулятор принимает числа от 1 до 10 включительно");
+                    }
+                    result = a+b;
+                    s=Integer.toString(result);
+                    System.out.println(s);
+                    return s;
                 }
             }
             else if (str1.indexOf(45) != -1)
@@ -40,16 +59,28 @@ public class Main
                 if (((strings[0].indexOf(73) != -1) || (strings[0].indexOf(86) != -1) || (strings[0].indexOf(88) != -1)) && ((strings[1].indexOf(73) != -1) || (strings[1].indexOf(86) != -1) || (strings[1].indexOf(88) != -1))) {
                     a = RomToArabic(strings[0]);
                     b = RomToArabic(strings[1]);
-
+                    if (a < 1 || a > 10 || b < 1 || b > 10)
+                    {
+                        throw new Exceptions("т.к. калькулятор принимает числа от 1 до 10 включительно");
+                    }
                     result = a - b;
                     if (result < 0) throw new Exceptions("т.к. в римской системе нет отрицательных чисел");
                     ArabicToRom(result);
+                    s=Integer.toString(result);
+                    return s;
                 }
 
                     else {
                     a = Integer.parseInt(strings[0]);
                     b = Integer.parseInt(strings[1]);
-                    System.out.println(a - b);
+                    if (a < 1 || a > 10 || b < 1 || b > 10)
+                    {
+                        throw new Exceptions("т.к. калькулятор принимает числа от 1 до 10 включительно");
+                    }
+                    result = a - b;
+                    s=Integer.toString(result);
+                    System.out.println(s);
+                    return s;
                 }
             }
             else if (str1.indexOf(42) != -1)
@@ -62,14 +93,27 @@ public class Main
                 if (((strings[0].indexOf(73) != -1) || (strings[0].indexOf(86) != -1) || (strings[0].indexOf(88) != -1)) && ((strings[1].indexOf(73) != -1) || (strings[1].indexOf(86) != -1) || (strings[1].indexOf(88) != -1))) {
                     a = RomToArabic(strings[0]);
                     b = RomToArabic(strings[1]);
+                    if (a < 1 || a > 10 || b < 1 || b > 10)
+                    {
+                        throw new Exceptions("т.к. калькулятор принимает числа от 1 до 10 включительно");
+                    }
                     result = a*b;
                     ArabicToRom(result);
+                    s=Integer.toString(result);
+                    return s;
                 }
                 else
                 {
                     a = Integer.parseInt(strings[0]);
                     b = Integer.parseInt(strings[1]);
-                    System.out.println(a * b);
+                    if (a < 1 || a > 10 || b < 1 || b > 10)
+                    {
+                        throw new Exceptions("т.к. калькулятор принимает числа от 1 до 10 включительно");
+                    }
+                    result = a * b;
+                    s=Integer.toString(result);
+                    System.out.println(s);
+                    return s;
                 }
             }
             else if (str1.indexOf(47) != -1)
@@ -82,12 +126,25 @@ public class Main
                 if (((strings[0].indexOf(73) != -1) || (strings[0].indexOf(86) != -1) || (strings[0].indexOf(88) != -1)) && ((strings[1].indexOf(73) != -1) || (strings[1].indexOf(86) != -1) || (strings[1].indexOf(88) != -1))) {
                     a = RomToArabic(strings[0]);
                     b = RomToArabic(strings[1]);
+                    if (a < 1 || a > 10 || b < 1 || b > 10)
+                    {
+                        throw new Exceptions("т.к. калькулятор принимает числа от 1 до 10 включительно");
+                    }
                     result = a/b;
                     ArabicToRom(result);
+                    s=Integer.toString(result);
+                    return s;
                 } else {
                     a = Integer.parseInt(strings[0]);
                     b = Integer.parseInt(strings[1]);
-                    System.out.println(a / b);
+                    if (a < 1 || a > 10 || b < 1 || b > 10)
+                    {
+                        throw new Exceptions("т.к. калькулятор принимает числа от 1 до 10 включительно");
+                    }
+                    result = a / b;
+                    s=Integer.toString(result);
+                    System.out.println(s);
+                    return s;
                 }
             }
             else throw new Exceptions("т.к. строка не является математической операцией");
@@ -95,6 +152,7 @@ public class Main
         {
             System.out.println("throws Exception //т.к. используются одновременно разные системы счисления");
         }
+        return s;
     }
     static int RomToArabic(String value)
     {
