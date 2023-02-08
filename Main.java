@@ -6,7 +6,6 @@ public class Main
     public static void main (String[] args) throws Exceptions {
         int a,b, result;
         String [] strings = new String [3];
-        
         Scanner in = new Scanner(System.in);
         String str1 = in.nextLine();
         in.close();
@@ -14,9 +13,9 @@ public class Main
         {
             if (str1.indexOf(43) != -1)
             {
-                strings = str1.split("\\+");
+                strings = str1.split("\\+",3);
 
-                if (!(strings[2] == null))
+                if (!(strings[2].isEmpty()))
                     throw new Exceptions("т.к. формат математической операции не удовлетворяет заданию - два операнда и один оператор (+, -, /, *)");
                 if (((strings[0].indexOf(73) != -1) || (strings[0].indexOf(86) != -1) || (strings[0].indexOf(88) != -1)) && ((strings[1].indexOf(73) != -1) || (strings[1].indexOf(86) != -1) || (strings[1].indexOf(88) != -1))) {
                     a = RomToArabic(strings[0]);
